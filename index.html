@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Northstar — a thoughtful job search workspace for modern careers." />
+  <title>Northstar | Find work that fits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="toast" id="toast" role="status"></div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Northstar home"><span class="brand-mark">✦</span>northstar</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="active" href="#jobs">Find jobs</a>
+        <a href="#insights">Market insights</a>
+        <a href="#employers">For employers</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="alertButton" aria-label="Manage job alerts"><span>♧</span><i id="alertDot"></i></button>
+        <button class="button button-dark button-small" data-modal="profileModal" id="profileButton">Create profile</button>
+        <button class="profile-chip hidden" id="profileChip"></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> A calmer way to find your next move</div>
+          <h1>Work that feels<br /><em>worthwhile.</em></h1>
+          <p>Discover thoughtful teams, meaningful roles, and the signal you need to make a confident career move.</p>
+          <form class="search-panel" id="searchForm">
+            <label class="search-field"><span>⌕</span><input id="keywordInput" type="search" placeholder="Role, skill, or keyword" /></label>
+            <label class="search-field search-location"><span>⌖</span><input id="locationInput" type="text" placeholder="City or remote" /></label>
+            <button class="button button-primary" type="submit">Search jobs <span>→</span></button>
+          </form>
+          <div class="popular-searches"><span>Popular:</span><button data-keyword="Product Designer">Product Designer</button><button data-keyword="Remote">Remote</button><button data-keyword="Data">Data</button><button data-keyword="Marketing">Marketing</button></div>
+        </div>
+        <div class="hero-art" aria-label="People collaborating around a table">
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="note-card"><span class="note-icon">↗</span><strong>Good work<br />starts here</strong><small>3,240 new roles this week</small></div>
+          <div class="person person-one"><div class="head"></div><div class="body"></div></div>
+          <div class="person person-two"><div class="head"></div><div class="body"></div></div>
+          <div class="table-shape"></div><div class="plant"><i></i><i></i><b></b></div>
+          <div class="floating-tag">✦ &nbsp;People-first companies</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-bar"><div class="container trust-inner"><span>Trusted by people at</span><strong>◒ orbit</strong><strong>nimbus</strong><strong>◉ lateral</strong><strong>evergreen</strong><strong>◎ kinfolk</strong></div></section>
+
+    <section class="section jobs-section" id="jobs">
+      <div class="container">
+        <div class="section-heading"><div><div class="eyebrow"><span></span> Curated for you</div><h2>Open roles with <em>potential.</em></h2></div><button class="text-button" id="clearFilters">Clear filters <span>↗</span></button></div>
+        <div class="job-layout">
+          <aside class="filters" aria-label="Job filters">
+            <div class="filter-title">Filter by <button id="mobileFilterToggle">☰</button></div>
+            <label>Workplace<select id="workplaceFilter"><option value="">Any workplace</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select></label>
+            <label>Job type<select id="typeFilter"><option value="">Any type</option><option>Full-time</option><option>Part-time</option><option>Contract</option></select></label>
+            <label>Industry<select id="industryFilter"><option value="">Any industry</option><option>Technology</option><option>Design</option><option>Finance</option><option>Health</option><option>Education</option></select></label>
+            <div class="salary-filter"><div class="range-label"><span>Minimum salary</span><strong id="salaryValue">$0k+</strong></div><input id="salaryFilter" type="range" min="0" max="180" step="10" value="0" /></div>
+            <div class="filter-note"><span>✦</span><div><strong>Good to know</strong><p>Companies on Northstar share salary ranges and culture details.</p></div></div>
+          </aside>
+          <div class="jobs-content"><div class="results-bar"><span id="resultCount">6 roles</span><div class="sort-control">Sort by <select id="sortSelect"><option value="featured">Featured</option><option value="salary">Salary: high to low</option><option value="newest">Newest</option></select></div></div><div class="job-list" id="jobList"></div><div class="empty-state hidden" id="emptyState"><div>⌁</div><h3>No roles found</h3><p>Try widening your search or clearing a filter.</p><button class="button button-outline" id="emptyClear">Clear filters</button></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section insights-section" id="insights">
+      <div class="container">
+        <div class="section-heading"><div><div class="eyebrow"><span></span> The bigger picture</div><h2>Make your next move<br /><em>with context.</em></h2></div><p class="heading-copy">A little data can turn a good decision into a great one. See what’s shaping the market right now.</p></div>
+        <div class="insights-grid"><article class="insight-card skills-card"><div class="card-top"><span class="label">Most in-demand skills</span><span class="trend-up">↗ 12.4%</span></div><h3>Skills employers<br />are looking for</h3><div class="skill-bars"><div><span>AI & machine learning</span><b><i style="width:92%"></i></b><strong>92%</strong></div><div><span>Product strategy</span><b><i style="width:78%"></i></b><strong>78%</strong></div><div><span>Data storytelling</span><b><i style="width:64%"></i></b><strong>64%</strong></div></div><a href="#insights">Explore skills report <span>→</span></a></article><article class="insight-card salary-card"><div class="card-top"><span class="label">Average salary</span><span class="trend-up">↗ 8.1%</span></div><h3>What your role<br />is worth today</h3><div class="salary-number">$124,800 <small>USD / year</small></div><div class="chart"><svg viewBox="0 0 500 110" preserveAspectRatio="none" aria-label="Salary trend chart"><path d="M0 93 C45 90 52 78 85 82 S130 67 161 72 S199 52 229 62 S270 47 297 55 S345 30 376 43 S420 20 450 29 S480 10 500 16" fill="none" stroke="#c9fb70" stroke-width="4"></path><path d="M0 93 C45 90 52 78 85 82 S130 67 161 72 S199 52 229 62 S270 47 297 55 S345 30 376 43 S420 20 450 29 S480 10 500 16 V110 H0Z" fill="url(#fade)"></path><defs><linearGradient id="fade" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#c9fb70" stop-opacity=".28"/><stop offset="1" stop-color="#c9fb70" stop-opacity="0"/></linearGradient></defs></svg><div><span>Jan</span><span>Apr</span><span>Jul</span><span>Oct</span></div></div><a href="#insights">See salary guide <span>→</span></a></article><article class="insight-card industry-card"><div class="card-top"><span class="label">Fast-growing industries</span><span class="trend-up">This month</span></div><h3>Where momentum<br />is building</h3><ol><li><span>Climate & energy</span><strong>+24%</strong></li><li><span>Health technology</span><strong>+18%</strong></li><li><span>Future of work</span><strong>+15%</strong></li><li><span>Financial wellness</span><strong>+11%</strong></li></ol><a href="#insights">View market report <span>→</span></a></article></div>
+      </div>
+    </section>
+
+    <section class="section employer-section" id="employers"><div class="container employer-grid"><div><div class="eyebrow"><span></span> For thoughtful employers</div><h2>Build a team<br />people <em>believe in.</em></h2><p>Tell your story, share your culture, and meet people who care about the work as much as you do.</p><div class="employer-actions"><button class="button button-dark" data-modal="employerModal">Create employer profile <span>→</span></button><button class="button button-text" data-modal="reviewModal">Leave a candidate review <span>↗</span></button></div></div><div class="employer-quote"><div class="quote-mark">“</div><blockquote>Northstar helped us hire people who genuinely care about our mission — not just people who could do the job.</blockquote><div class="quote-author"><div class="avatar avatar-orange">KS</div><span><strong>Kira Shah</strong><small>People lead, Lateral</small></span></div></div></div></section>
+
+    <section class="newsletter"><div class="container newsletter-inner"><div><div class="eyebrow"><span></span> Stay in the loop</div><h2>Good opportunities,<br /><em>delivered.</em></h2></div><form id="alertForm" class="alert-form"><input id="alertEmail" type="email" placeholder="Your email address" required /><select id="alertRole"><option>Product & Design</option><option>Engineering</option><option>Marketing</option><option>Data & Analytics</option></select><button class="button button-primary" type="submit">Get job alerts <span>→</span></button><small>One thoughtful email a week. Unsubscribe anytime.</small></form></div></section>
+  </main>
+
+  <footer><div class="container footer-inner"><a class="brand" href="#top"><span class="brand-mark">✦</span>northstar</a><span>© 2024 Northstar. Make work matter.</span><div><a href="#jobs">Jobs</a><a href="#insights">Insights</a><a href="#employers">Employers</a></div></div></footer>
+
+  <div class="modal-backdrop" id="profileModal"><div class="modal"><button class="modal-close" data-close>×</button><div class="eyebrow"><span></span> Your next chapter</div><h2>Create your profile</h2><p>Stand out to the right teams. Your details stay in this browser.</p><form id="profileForm"><label>Full name<input name="name" required placeholder="Alex Morgan" /></label><label>Email address<input name="email" type="email" required placeholder="alex@email.com" /></label><label>Phone number<input name="phone" placeholder="+1 555 000 0000" /></label><label>Resume link<input name="resume" type="url" placeholder="https://..." /></label><button class="button button-dark full" type="submit">Save my profile <span>→</span></button></form></div></div>
+  <div class="modal-backdrop" id="employerModal"><div class="modal"><button class="modal-close" data-close>×</button><div class="eyebrow"><span></span> Grow with intention</div><h2>Employer profile</h2><p>Share the details job seekers want to know.</p><form id="employerForm"><label>Company name<input name="company" required placeholder="Lateral Studio" /></label><label>Industry<select name="industry"><option>Technology</option><option>Design</option><option>Finance</option><option>Health</option><option>Education</option></select></label><label>Company culture<textarea name="culture" required placeholder="What makes your team a great place to work?"></textarea></label><label>Open role<input name="role" placeholder="e.g. Senior Product Designer" /></label><button class="button button-dark full" type="submit">Publish employer profile <span>→</span></button></form></div></div>
+  <div class="modal-backdrop" id="reviewModal"><div class="modal"><button class="modal-close" data-close>×</button><div class="eyebrow"><span></span> Close the loop</div><h2>Review a candidate</h2><p>Recognize the people who helped your team move forward.</p><form id="reviewForm"><label>Candidate name<input name="candidate" required placeholder="Jordan Lee" /></label><label>Role they held<input name="role" required placeholder="Product Manager" /></label><label>Your review<textarea name="review" required placeholder="What stood out about their work?"></textarea></label><label>Rating<select name="rating"><option>5 — Exceptional</option><option>4 — Strong</option><option>3 — Solid</option></select></label><button class="button button-dark full" type="submit">Publish review <span>→</span></button></form></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
